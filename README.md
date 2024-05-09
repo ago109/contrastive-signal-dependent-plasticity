@@ -5,7 +5,9 @@
 This is the code for the paper:
 "Contrastive-Signal-Dependent-Plasticity: Self-Supervised Learning in Spiking Neural Circuits"
 a preprint of which can be found here:
-https://arxiv.org/abs/2303.18187
+https://arxiv.org/abs/2303.18187 <br>
+Note that this code requires Python 3.11, jax/jaxlib 0.4.26 (for Cuda-12), and 
+ngclearn 1.0.b3 (with ngcsimlib 0.2.b2) to be installed on your system.
 
 Make sure you unzip the mnist data prepared for you in the `/data/` folder
 (unzip `/data/mnist.zip` and place it inside of `/data/`).
