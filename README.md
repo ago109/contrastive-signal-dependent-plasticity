@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/798347724.svg)](https://zenodo.org/doi/10.5281/zenodo.11165561)
+
 # Contrastive-Signal-Dependent-Plasticity (CSDP)
 
 This is the code for the paper:
