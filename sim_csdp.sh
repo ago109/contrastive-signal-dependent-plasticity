@@ -9,7 +9,7 @@ DATASET="mnist"
 DATA_DIR="data/"$DATASET
 
 ALGO_TYPE="supervised"
-NUM_ITER=1 #30
+NUM_ITER=30
 NZ1=1024
 NZ2=1024
 
