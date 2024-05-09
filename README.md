@@ -5,6 +5,8 @@ This is the code for the paper:
 a preprint of which can be found here:
 https://arxiv.org/abs/2303.18187
 
+Make sure you unzip the mnist data prepared for you in the `/data/` folder
+(unzip `/data/mnist.zip` and place it inside of `/data/`).
 To train a CSDP SNN model (with `1024` neuronal cells in each layer), run the
 following prepared BASH script:
 ```console
