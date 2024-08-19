@@ -63,3 +63,14 @@ Inside your model directory, e.g., `exp_supervised_mnist/`, the analysis script 
 sub-directory called `/tsne/`. It is in here that you will find a t-SNE plot of your model's 
 extracted latent codes (as well as a numpy array containing the tSNE embedding codes).
 
+
+If you use this code or model mathematics in any form in your project(s), please cite its source
+paper:
+<pre>
+@article{ororbia2023contrastive,
+  title={Contrastive-signal-dependent plasticity: Forward-forward learning of spiking neural systems},
+  author={Ororbia, Alexander},
+  journal={arXiv preprint arXiv:2303.18187},
+  year={2023}
+}
+</pre>
