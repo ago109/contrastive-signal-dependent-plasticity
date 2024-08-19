@@ -13,7 +13,7 @@ ngclearn 1.2.b3 (with ngcsimlib 0.3.b4) successfully installed on your system.
 ## Installation
 
 If you have Python 3.10.6 installed, you can automatically configure the needed dependencies 
-via PyPI. It is recommended that you first create a separate Python virtual environment (VM) to 
+via pip. It is recommended that you first create a separate Python virtual environment (VM) to 
 act as a playground for this code (and protect your working environment) like so:
 
 ```consolve
@@ -21,13 +21,13 @@ python3.10 -m venv env_csdp  ## create a playground VM
 source env_csdp/bin/activate  ## activate/enter the playground VM
 ```
 
-You can then install the required libraries/modules in your Python VM via PyPI like so:
+You can then install the required libraries/modules in your Python VM via the pip package installer like so:
 
 ```console
 pip install -r requirements.txt  ## install required libraries in your playground VM
 ```
 
-Note: Running the above PyPI command will ensure that you have the GPU-enabled variants of 
+<i>Note:</i> Running the above pip command will ensure that you have the GPU-enabled variants of 
 JAX and NGC-Sim-Lib/NGC-Learn.
 
 ## Running the Model Simulation 
@@ -48,6 +48,9 @@ will be stored, if you run the script in its default mode (i.e., w/o modifying
 its arguments) to a folder `exp_supervised_mnist/` which contains your saved
 ngc-learn CSDP SNN model.
 
+<i>Note:</i> You can safely ignore the warnings collected in auto-generated `logging/` directoy as these 
+are simply where ngc-learn/sim-lib store library messages.
+
 ## Running the Model Evaluation/Analysis
 
 To evaluate your CSDP model after training it as above, run the following analysis BASH script:
@@ -55,7 +58,8 @@ To evaluate your CSDP model after training it as above, run the following analys
 ./eval_csdp.sh 0
 ```
 
-Inside your model directory, e.g., `exp_supervised_mnist/`, the analysis script above creates a 
+This script will run your CSDP SNN model (inference-only) on the test subset of the MNIST database. 
+Inside your model directory, e.g., `exp_supervised_mnist/`, the analysis script above also creates a 
 sub-directory called `/tsne/`. It is in here that you will find a t-SNE plot of your model's 
 extracted latent codes (as well as a numpy array containing the tSNE embedding codes).
 
