@@ -6,34 +6,56 @@ This is the code for the paper:
 "Contrastive-Signal-Dependent-Plasticity: Self-Supervised Learning in Spiking Neural Circuits"
 a preprint of which can be found here:
 https://arxiv.org/abs/2303.18187 <br>
-Note that this code assumes that you have Python 3.11, jax/jaxlib 0.4.26 (for Cuda-12), and 
-ngclearn 1.0.b3 (with ngcsimlib 0.2.b2) successfully installed on your system.
+Note that this code was written on/run on an Ubuntu 22.04.2 LTS and 
+assumes that you have Python 3.10.6, jax/jaxlib 0.4.28 (for Cuda-12), and 
+ngclearn 1.2.b3 (with ngcsimlib 0.3.b4) successfully installed on your system.
 
-Make sure you unzip the mnist data prepared for you in the `/data/` folder
-(unzip `/data/mnist.zip` and place it inside of `/data/`).
-To train a CSDP SNN model (with `1024` neuronal cells in each layer), run the
-following prepared BASH script:
-```console
-./sim_csdp.sh
+## Installation
+
+If you have Python 3.10.6 installed, you can automatically configure the needed dependencies 
+via PyPI. It is recommended that you first create a separate Python virtual environment (VM) to 
+act as a playground for this code (and protect your working environment) like so:
+
+```consolve
+python3.10 -m venv env_csdp  ## create a playground VM
+source env_csdp/bin/activate  ## activate/enter the playground VM
 ```
 
-This will train a CSDP SNN model on the MNIST database for you.
+You can then install the required libraries/modules in your Python VM via PyPI like so:
+
+```console
+pip install -r requirements.txt  ## install required libraries in your playground VM
+```
+
+Note: Running the above PyPI command will ensure that you have the GPU-enabled variants of 
+JAX and NGC-Sim-Lib/NGC-Learn.
+
+## Running the Model Simulation 
+
+In order to run the simulation, make sure you unzip the mnist data prepared for you in 
+the `/data/` folder (unzip `/data/mnist.zip` and place it inside of `/data/`).
+To train a CSDP SNN model (with `3000` neuronal cells in the first layer and `600` cells 
+in the second one), run the following prepared BASH script:
+```console
+./sim_csdp.sh 0
+```
+
+This will train a CSDP SNN model on the MNIST database for you (on the GPU with identifier 0; 
+if you want to run a different GPU, choose another appropriate integer identifier).
 Furthermore, the script will generate the model structure (in ngc-learn JSON format) as well as
 store NPZ files containing your best found parameters during training. All of this
 will be stored, if you run the script in its default mode (i.e., w/o modifying
 its arguments) to a folder `exp_supervised_mnist/` which contains your saved
 ngc-learn CSDP SNN model.
 
-To evaluate your CSDP model after training it, run the following analysis script
+## Running the Model Evaluation/Analysis
+
+To evaluate your CSDP model after training it as above, run the following analysis BASH script:
 ```console
-python analyze_csdp.py  --dataX=data/mnist/testX.npy \
-                        --dataY=data/mnist/testY.npy \
-                        --modelDir=exp_supervised_mnist/ \
-                        --paramDir=best_params1234
+./eval_csdp.sh 0
 ```
 
-For the analysis script, the parameter sub-directory can be toggled by changing
-the "paramDir" argument, which is simply the name of the sub-directory within
-your model directory "modelDir" that contains the saved NPZ synaptic arrays.
-Inside the output directory it creates `/exp/`, you will find a t-SNE plot
-of your model's extracted latent codes.
+Inside your model directory, e.g., `exp_supervised_mnist/`, the analysis script above creates a 
+sub-directory called `/tsne/`. It is in here that you will find a t-SNE plot of your model's 
+extracted latent codes (as well as a numpy array containing the tSNE embedding codes).
+
