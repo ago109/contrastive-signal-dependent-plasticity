@@ -7,7 +7,7 @@ from ngclearn.utils import tensorstats
 
 @partial(jit, static_argnums=[2])
 def calc_goodness(z, thr, maximize=True):
-    z_sqr = jnp.square(z) #tf.math.square(tf.matmul(z, self.R1))
+    z_sqr = jnp.square(z) 
     delta = jnp.sum(z_sqr, axis=1, keepdims=True)
     if maximize:
         ## maximize for positive samps, minimize for negative samps
@@ -15,8 +15,8 @@ def calc_goodness(z, thr, maximize=True):
     else:
         ## minimize for positive samps, maximize for negative samps
         delta = -delta + thr
-    scale = 1. #5.
-    delta = delta * scale #3.5
+    scale = 1. 
+    delta = delta * scale 
     # gets the probability P(pos)
     p = nn.sigmoid(delta)
     eps = 1e-5 #1e-6
@@ -27,13 +27,10 @@ def calc_goodness(z, thr, maximize=True):
 def calc_loss(z, lab, thr, keep_batch=False):
     _lab = (lab > 0.).astype(jnp.float32)
     p, logit = calc_goodness(z, thr)
-    #CE = tf.nn.softplus(-logit) * lab + tf.nn.softplus(logit) * (1.0 - lab)
     CE = jnp.maximum(logit, 0) - logit * _lab + jnp.log(1. + jnp.exp(-jnp.abs(logit)))
     L = jnp.sum(CE, axis=1, keepdims=True)
-    #CE = lab * tf.math.log(p) + (1.0 - lab) * tf.math.log(1.0 - p)
-    #L = -tf.reduce_sum(CE, axis=1, keepdims=True)
     if keep_batch == False:
-        L = jnp.mean(L) #jnp.sum(L)
+        L = jnp.mean(L) 
     return L
 
 @partial(jit, static_argnums=[3])
@@ -65,7 +62,7 @@ class GoodnessModCell(JaxComponent):
         self.n_units = n_units
         self.batch_size = batch_size
 
-        ## Convolution shape setup
+        ## (default) Convolution shape setup
         self.width = self.height = n_units
 
         ## Compartment setup
