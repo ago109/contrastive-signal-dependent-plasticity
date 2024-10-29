@@ -4,7 +4,7 @@
 
 This is the supporting code for the Science Advances paper:
 <a href="https://www.science.org/doi/10.1126/sciadv.adn6076">"Contrastive-Signal-Dependent-Plasticity: Self-Supervised Learning in Spiking Neural Circuits"</a> 
-the historical preprint of which can also be found <a href="https://arxiv.org/abs/2303.18187">here</a. <br>
+the historical preprint of which can also be found <a href="https://arxiv.org/abs/2303.18187">here</a>. <br>
 Note that this code was written on/run on an Ubuntu 22.04.2 LTS and 
 assumes that you have Python 3.10.6, jax/jaxlib 0.4.28 (for Cuda-12), and 
 ngclearn 1.2.b3 (with ngcsimlib 0.3.b4) successfully installed on your system.
