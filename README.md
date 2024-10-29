@@ -2,10 +2,9 @@
 
 # Contrastive-Signal-Dependent-Plasticity (CSDP)
 
-This is the code for the paper:
-"Contrastive-Signal-Dependent-Plasticity: Self-Supervised Learning in Spiking Neural Circuits"
-a preprint of which can be found here:
-https://arxiv.org/abs/2303.18187 <br>
+This is the supporting code for the Science Advances paper:
+<a href="https://www.science.org/doi/10.1126/sciadv.adn6076">"Contrastive-Signal-Dependent-Plasticity: Self-Supervised Learning in Spiking Neural Circuits"</a> 
+the historical preprint of which can also be found <a href="https://arxiv.org/abs/2303.18187">here</a. <br>
 Note that this code was written on/run on an Ubuntu 22.04.2 LTS and 
 assumes that you have Python 3.10.6, jax/jaxlib 0.4.28 (for Cuda-12), and 
 ngclearn 1.2.b3 (with ngcsimlib 0.3.b4) successfully installed on your system.
@@ -65,12 +64,18 @@ extracted latent codes (as well as a numpy array containing the tSNE embedding c
 
 
 If you use this code or model mathematics in any form in your project(s), please cite its source
-paper:
+article:
 <pre>
-@article{ororbia2023contrastive,
-  title={Contrastive-signal-dependent plasticity: Forward-forward learning of spiking neural systems},
-  author={Ororbia, Alexander},
-  journal={arXiv preprint arXiv:2303.18187},
-  year={2023}
+@article{
+	doi:10.1126/sciadv.adn6076,
+	author = {Alexander G. Ororbia },
+	title = {Contrastive signal–dependent plasticity: Self-supervised learning in spiking neural circuits},
+	journal = {Science Advances},
+	volume = {10},
+	number = {43},
+	pages = {eadn6076},
+	year = {2024},
+	doi = {10.1126/sciadv.adn6076},
+	URL = {https://www.science.org/doi/abs/10.1126/sciadv.adn6076}
 }
 </pre>
